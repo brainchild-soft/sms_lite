@@ -53,7 +53,7 @@ class MessageController extends Controller
                             'TotalLog', 
                             'TotalLog_dl', 
                             'TotalLog_undl', 
-                            'Errors', 
+                            'Errors'
 
                         )
                     );  

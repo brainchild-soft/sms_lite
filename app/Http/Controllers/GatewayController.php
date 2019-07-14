@@ -71,17 +71,16 @@ class GatewayController extends Controller
     public function edit($id)
     {
         $Customers = User::where('Role', '=', 'Customer')->get();
-        $Gateways 
-        = messagelog::whereNotExists
-            (function ($query) {
-                $query
-                ->select('Gateway')
-                ->from('gateways')
-                ->whereRaw('messagelog.Gateway = gateways.Gateway');
-            })
-        ->groupBy('messagelog.Gateway')
-        ->orderBy('messagelog.Gateway')
-        ->get();
+        $Gateways = messagelog::whereNotExists
+                (function ($query) {
+                    $query
+                    ->select('Gateway')
+                    ->from('gateways')
+                    ->whereRaw('messagelog.Gateway = gateways.Gateway');
+                })
+            ->groupBy('messagelog.Gateway')
+            ->orderBy('messagelog.Gateway')
+            ->get();
         $CustomerGateway = gateway::find($id);
         return view('gateway.CustomerGatewayEdit', 
                         compact(

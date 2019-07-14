@@ -29,7 +29,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $User = User::find('1');
+        $User = User::findOrFail(8);
+
         return view('users.users', compact('User'));
     }
 
