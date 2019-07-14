@@ -18,13 +18,13 @@ Route::get('/',	function()
 	}
 );
 
-Route::resource('out', 'MessageOutController');
+//Route::resource('out', 'MessageOutController');
 Route::resource('home', 'MessageController');
-Route::resource('bills', 'BillController');
-Route::resource('Operators', 'OperatorController');
-Route::resource('Customers', 'CustomerController');
+//Route::resource('bills', 'BillController');
+//Route::resource('Operators', 'OperatorController');
+//Route::resource('Customers', 'CustomerController');
 Route::resource('CustomerGateway', 'GatewayController');
-Route::resource('SMSRate', 'SMSRateController');
+//Route::resource('SMSRate', 'SMSRateController');
 Route::resource('Users', 'UserController');
 Route::resource('ApiUser', 'ApiUserController');
 Route::resource('SwitchSetting', 'SwitchController');
@@ -50,16 +50,20 @@ Route::get('ConnectorReport', 'MessageController@ConnectorReport');
 Route::post('SenderReport', 'MessageController@SenderReport');
 Route::post('GatewayReport', 'MessageController@GatewayReport');
 Route::post('ConnectorReport', 'MessageController@ConnectorReport');
-/* Bill Generator */
-Route::get('Bills', 'BillController@Bills');
-Route::get('PartBills', 'BillController@PartBills');
-Route::get('SingleBills', 'BillController@SingleBills');
-/* Bill Search */
-Route::post('Bills', 'BillController@Bills');
-Route::post('PartBills', 'BillController@PartBills');
-Route::post('SingleBills', 'BillController@SingleBills');
-Route::get('SingleBillDetails/{ClientId?}/{from_date?}/{to_date?}', 'BillController@SingleBillDetails');
-Route::get('PartsBillDetails/{ClientId?}/{from_date?}/{to_date?}', 'BillController@PartsBillDetails');
+
+///* Bill Generator */
+//Route::get('Bills', 'BillController@Bills');
+//Route::get('PartBills', 'BillController@PartBills');
+//Route::get('SingleBills', 'BillController@SingleBills');
+//
+///* Bill Search */
+//Route::post('Bills', 'BillController@Bills');
+//Route::post('PartBills', 'BillController@PartBills');
+//Route::post('SingleBills', 'BillController@SingleBills');
+//Route::get('SingleBillDetails/{ClientId?}/{from_date?}/{to_date?}', 'BillController@SingleBillDetails');
+//Route::get('PartsBillDetails/{ClientId?}/{from_date?}/{to_date?}', 'BillController@PartsBillDetails');
+
+
 Route::put('ResetError', 'MessageController@ResetError');
 
 // Gateway Switch

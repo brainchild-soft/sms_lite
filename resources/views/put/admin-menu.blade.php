@@ -32,6 +32,12 @@
                               <span>Api User </span>
                           </a>
                       </li>
+                        <li>
+                            <a href="{{route('SwitchSetting.index') }}">
+                                <i class="fa fa-drivers-license-o" aria-hidden="true"></i>
+                                <span>Error Code </span>
+                            </a>
+                        </li>
 
                       <li>
                         <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

@@ -2,19 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\switch_seting;
+use App\ErrorCode;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
-class SwitchController extends Controller
+class ErrorCodeController extends Controller
 {
-
-
-     public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -22,9 +16,10 @@ class SwitchController extends Controller
      */
     public function index()
     {
-        $Settings = switch_seting::latest()->paginate(15);
-        $Role=Auth::user()->Role;
-        return view('error_code.index', compact('Settings', 'Role'));
+        $errorCodes = ErrorCode::all();
+        return view('error_code.index',[
+            'error_codes'=>$errorCodes,
+        ]);
     }
 
     /**
@@ -45,13 +40,23 @@ class SwitchController extends Controller
      */
     public function store(Request $request)
     {
-        $insert = new switch_seting;
-        $insert->ErrorCode = $request->ErrorCode;
-        $insert->ErrorName = $request->ErrorName;
-        $insert->Limit = $request->Limit;
-        $insert->save();
-        session()->flash('alert', 'Error Code '.$insert->ErrorCode.' set with limit '.$insert->Limit.' added successfully');
-        return redirect('/SwitchSetting');
+        $validator = Validator::make($request->all(),[
+            'ErrorCode'=>'required',
+            'ErrorName'=>'required',
+            'Limit'=>'required',
+        ]);
+
+        if($validator->passes()){
+            try{
+                DB::beginTransaction();
+
+            }catch (\Exception $ex){
+                DB::rollback();
+
+            }
+        }else{
+
+        }
     }
 
     /**
@@ -73,8 +78,7 @@ class SwitchController extends Controller
      */
     public function edit($id)
     {
-        $Setting = switch_seting::find($id);
-        return view('gateway.SwitchSettingEdit', compact('Setting'));
+        //
     }
 
     /**
@@ -86,13 +90,7 @@ class SwitchController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $insert = switch_seting::find($id);
-        $insert->ErrorCode = $request->ErrorCode;
-        $insert->ErrorName = $request->ErrorName;
-        $insert->Limit = $request->Limit;
-        $insert->save();
-        session()->flash('alert', 'Error Code '.$insert->ErrorCode.' set with limit '.$insert->Limit.' updated successfully');
-        return redirect('/SwitchSetting');
+        //
     }
 
     /**
@@ -103,9 +101,6 @@ class SwitchController extends Controller
      */
     public function destroy($id)
     {
-        $delete=  switch_seting::find($id);
-        $delete->delete();
-        session()->flash('alert', ' Deleted Successfully');
-        return redirect('/SwitchSetting'); 
+        //
     }
 }
