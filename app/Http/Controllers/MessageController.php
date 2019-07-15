@@ -22,41 +22,29 @@ class MessageController extends Controller
 
     public function index()
     {
-
-            $TotalLog 
-                = messagelog::count('Id');        
-            
-            $TotalLog_dl 
-                = messagelog::where('StatusCode','=','201')->count('Id');
-            
-            $TotalLog_undl 
-                = messagelog::where('StatusCode','!=','201')->count('Id');
-
-            $TotalGateway 
-                = gateway::count('id');
-
-            $Gateways = gateway::all();
-
-            $Errors
-                = messagelog::select('ErrorCode', 'Gateway')
-                ->where('ErrorCode', '>', '0')
-                ->where('StatusCode','!=','201')
-                ->orderBy('SendTime', 'desc')
-               // ->groupBy('Gateway')
-                ->get();              
+        $TotalLog= messagelog::count('Id');
+        $TotalLog_dl= messagelog::where('StatusCode','=','201')->count('Id');
+        $TotalLog_undl= messagelog::where('StatusCode','!=','201')->count('Id');
+        $TotalGateway= gateway::count('id');
+        $Gateways = gateway::all();
+        $Errors= messagelog::select('ErrorCode', 'Gateway')
+            ->where('ErrorCode', '>', '0')
+            ->where('StatusCode','!=','201')
+            ->orderBy('SendTime', 'desc')
+           // ->groupBy('Gateway')
+            ->get();
 
 
-           return view('home', 
-                            compact(
-                            'Gateways', 
-                            'TotalGateway', 
-                            'TotalLog', 
-                            'TotalLog_dl', 
-                            'TotalLog_undl', 
-                            'Errors'
-
-                        )
-                    );  
+        return view('home',
+                        compact(
+                        'Gateways',
+                        'TotalGateway',
+                        'TotalLog',
+                        'TotalLog_dl',
+                        'TotalLog_undl',
+                        'Errors'
+                    )
+                );
                
     }
 

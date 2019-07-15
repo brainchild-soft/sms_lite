@@ -22,7 +22,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="table-responsive"> 
-                            <table class="table table-primary table-striped table-hover">
+                            <table class="table table-primary table-striped table-hover table-sm ">
                                 <thead class="table-dark">
   
                                     <tr class="text-center">
@@ -39,11 +39,11 @@
                                         <td>  {{$Gateway->Gateway}}</td>
                                                        
                                         <td class="text-right">
-                                            <a href="{{ url('/CustomerGateway/'.$Gateway->id.'/edit') }}" class="btn btn-primary btn-sm mb-1">
+                                            <a style="display: inline-block" href="{{ url('/CustomerGateway/'.$Gateway->id.'/edit') }}" class="btn btn-primary btn-sm mb-1">
                                                 <i class="fa fa-pencil" aria-hidden="true"></i>
                                             </a>
 
-                                        <form action="{{ url('/CustomerGateway/'.$Gateway->id) }}" method="POST">
+                                        <form style="display: inline-block" action="{{ url('/CustomerGateway/'.$Gateway->id) }}" method="POST">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
 

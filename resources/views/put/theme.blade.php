@@ -41,12 +41,12 @@
 
             @section('body')
             @show
-               <div class="col-lg-12 col-12 text-center">
-                            <div class="alert bg-info fade show text-center text-white">
-                                <a href="#" onclick="window.open('https://rngcommunication.com')" class="alert-link text-white">R&G Communication</a> | <strong> {{ date('Y') }}  </strong> 
-                            
-                            </div> 
-                        </div>
+                <div class="col-lg-12 col-12 text-center">
+                    <div class="alert bg-info fade show text-center text-white">
+                        <a href="#" onclick="window.open('https://rngcommunication.com')" class="alert-link text-white">R&G Communication</a> | <strong> {{ date('Y') }}  </strong>
+
+                    </div>
+                </div>
         </div>
 
 
